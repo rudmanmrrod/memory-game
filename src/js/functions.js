@@ -47,6 +47,18 @@ function loadTable(items){
  */
 function flipCard(element){
 	var flip = $(element).data("flip-model");
+	var active = 0;
+	$.each($(".card-grid"),function(key,value){
+		var fliped_element = $(value).data("flip-model");
+		if(fliped_element.isFlipped){
+			active += 1;
+		}
+	});
+	if(active>=2){
+		$.each($(".card-grid"),function(key,value){
+			$(value).flip(false);
+		});
+	}
 	if(flip.isFlipped==false){
 		$(element).flip(true);	
 	}else{
@@ -62,7 +74,6 @@ function flipCard(element){
 function timeStart(){
 	timer.start();
 	timer.addEventListener('secondsUpdated', function (e) {
-		console.log(timer.getTimeValues());
 	  $('.timer_values').html(timer.getTimeValues().toString());
 
 	});
