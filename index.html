@@ -3,15 +3,64 @@
 <head>
 	<title>Memory Game - Javascript</title>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
 	<link rel="stylesheet" type="text/css" href="src/plugins/materialize/css/materialize.min.css">
 	<link rel="stylesheet" type="text/css" href="src/plugins/materialize/material_icon/icon.css">
 	<link rel="stylesheet" type="text/css" href="src/css/style.css">
+	<script type="text/javascript" src="src/plugins/jquery/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="src/plugins/flip/jquery.flip.min.js"></script>
+	<script type="text/javascript" src="src/plugins/materialize/js/materialize.min.js"></script>
 </head>
 <body>
+	<header>
+		<nav>
+			<div class="nav-wrapper blue darken-3">
+				<a href="#" class="brand-logo center">Memory Game - Javascript</a>
+				<a href="#" data-target="slide-out" class="sidenav-trigger text-white"><i class="material-icons">menu</i></a>
+			</div>
+		</nav>
+	</header>
+	<main>
 
-<script type="text/javascript" src="src/plugins/jquery/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="src/plugins/flip/jquery.flip.min.js"></script>
-<script type="text/javascript" src="src/plugins/materialize/js/materialize.min.js"></script>
+		<div id="menu">
+			<ul id="slide-out" class="sidenav sidenav-fixed">
+				<li class="center"></li>
+				<li><a href="#!" class="blue-text darken-4">New Game</a></li>
+				<li><a href="#!" class="blue-text darken-4">Restart</a></li>
+<!-- 				<li class="no-padding">
+					<ul class="collapsible collapsible-accordion">
+						<li>
+							<a class="collapsible-header">Experiencias<i class="material-icons">arrow_drop_down</i></a>
+							<div class="collapsible-body">
+						<ul>
+							<li><a href="#!">Etapa Básica</a></li>
+							<li><a href="#!">Etapa Bachillerato</a></li>
+							<li><a href="#!">Etapa Técnica</a></li>
+							<li><a href="#!">Pasantías</a></li>
+							<li><a href="#!">Año Sabático</a></li>
+							<li><a href="#!">Universidad</a></li>
+							<li><a href="#!">Cenditel</a></li>
+						</ul>
+						</div>
+						</li>
+					</ul>
+				</li> -->
+			</ul>
+		</div>
+		<div id="content">
+		</div>
+	</main>
+	<footer class="page-footer blue darken-3">
+		<div class="center">
+		<span style="font: 18px Arial, sans-serif; display: inline-block; transform: rotate(180deg);">©</span> rudmanmrrod
+		</div>
+	</footer>
+<script>
+	$(document).ready(function(){
+		$(".button-collapse").sidenav();
+		$('.collapsible').collapsible();
+	});
+</script>
 </body>
 
 </html>
