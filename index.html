@@ -10,13 +10,15 @@
 	<script type="text/javascript" src="src/plugins/jquery/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="src/plugins/flip/jquery.flip.min.js"></script>
 	<script type="text/javascript" src="src/plugins/materialize/js/materialize.min.js"></script>
+	<script type="text/javascript" src="src/plugins/easytimer/easytimer.min.js"></script>
+	<script type="text/javascript" src="src/js/functions.js"></script>
 </head>
 <body>
 	<header>
 		<nav>
 			<div class="nav-wrapper blue darken-3">
 				<a href="#" class="brand-logo center">Memory Game - Javascript</a>
-				<a href="#" data-target="slide-out" class="sidenav-trigger text-white"><i class="material-icons">menu</i></a>
+				<a href="#" data-target="slide-out" class="sidenav-trigger white-text"><i class="material-icons">menu</i></a>
 			</div>
 		</nav>
 	</header>
@@ -24,22 +26,58 @@
 
 		<div id="menu">
 			<ul id="slide-out" class="sidenav sidenav-fixed">
-				<li class="center"></li>
-				<li><a href="#!" class="blue-text darken-4">New Game</a></li>
+				<li class="center">
+					<div class="nav-wrapper blue darken-3">
+						<a href="#" class="center white-text">Menú</a>
+					</div>
+				</li>
+				<li class="no-padding">
+					<ul class="collapsible collapsible-accordion">
+						<li>
+							<a class="collapsible-header blue-text darken-4">
+								New Game <i class="material-icons">arrow_drop_down</i>
+							</a>
+							<div class="collapsible-body">
+								<ul>
+									<li>
+										<div class="input-field col s6">
+						          <input id="card_number" type="text" class="validate" min="10" max="64" value="10">
+						          <label for="card_number" class="blue-text darken-3">Card Number</label>
+						        </div>
+									</li>
+									<li>
+										<p class="blue-text darken-3">Difficulty</p>
+										<label>
+							        <input name="difficulty" type="radio" value="easy" checked />
+							        <span>Easy</span>
+							      </label>
+							      <label>
+							        <input name="difficulty" type="radio" value="medi" />
+							        <span>Medium</span>
+							      </label>
+							      <label>
+							        <input name="difficulty" type="radio" value="hard" />
+							        <span>Hard</span>
+							      </label>
+									</li>
+									<!-- <li><a href="#!">Size</a></li> -->
+								</ul>
+								<div class="center">
+									<button class="waves-effect waves-light btn blue darken-3" onclick="startGame()">Start</button>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</li>
 				<li><a href="#!" class="blue-text darken-4">Restart</a></li>
 <!-- 				<li class="no-padding">
 					<ul class="collapsible collapsible-accordion">
 						<li>
-							<a class="collapsible-header">Experiencias<i class="material-icons">arrow_drop_down</i></a>
+							<a class="collapsible-header">Options<i class="material-icons">arrow_drop_down</i></a>
 							<div class="collapsible-body">
 						<ul>
-							<li><a href="#!">Etapa Básica</a></li>
-							<li><a href="#!">Etapa Bachillerato</a></li>
-							<li><a href="#!">Etapa Técnica</a></li>
-							<li><a href="#!">Pasantías</a></li>
-							<li><a href="#!">Año Sabático</a></li>
-							<li><a href="#!">Universidad</a></li>
-							<li><a href="#!">Cenditel</a></li>
+							<li><a href="#!">Cards</a></li>
+							<li><a href="#!">Size</a></li>
 						</ul>
 						</div>
 						</li>
@@ -48,6 +86,11 @@
 			</ul>
 		</div>
 		<div id="content">
+				<div class="center" id="timer" style="display: none">
+			    <div class="timer_values">00:00:00</div>
+				</div>
+			  <div class="row">
+			  </div>
 		</div>
 	</main>
 	<footer class="page-footer blue darken-3">
@@ -56,6 +99,7 @@
 		</div>
 	</footer>
 <script>
+	var timer = new Timer();
 	$(document).ready(function(){
 		$(".button-collapse").sidenav();
 		$('.collapsible').collapsible();

@@ -17,3 +17,15 @@ header, main, footer {
 		padding-left: 0;
 	}
 }
+
+.card-grid{
+	height: 200px;
+}
+
+.card-grid .front{
+	background-color: white
+}
+
+.card-grid .back{
+	background-color: green;
+}
