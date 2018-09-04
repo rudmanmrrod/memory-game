@@ -10,7 +10,41 @@ function startGame(){
 		$('#timer').show();
 		loadTable(card_number);
 		timeStart();
+		startMatrix();
 	}
+}
+
+/**
+ * Function to start matrix for game
+ * @method startMatrix
+ * @return loadtable on card number 
+ */
+function startMatrix(){
+	var card_number = $('#card_number').val();
+	while (flibBoard.length<card_number) {
+		var random_number = Math.floor((Math.random() * parseInt(card_number/2)) + 1);
+		times = countItem(flibBoard,random_number);
+		if(times<2){
+			flibBoard.push(random_number);
+		}
+	}
+}
+
+/**
+ * Function to count item in array
+ * @method countItem
+ * @param {obj} element
+ * @param {int} item
+ * @return times item appear
+ */
+function countItem(element,item){
+	var times = 0;
+	$.each(element,function(key,value){
+			if(value==item){
+				times += 1;
+			}
+	});
+	return times;
 }
 
 /**
@@ -21,14 +55,13 @@ function startGame(){
  */
 function loadTable(items){
 	var html = '';
-	for (var i = parseInt(items); i >= 0; i--) {
+	for (var i = parseInt(items)-1; i >= 0; i--) {
 		html += '<div class="col s2 m2">';
-		html += '<div class="card card-grid" onclick=flipCard(this)>';
+		html += '<div class="card card-grid" onclick=flipCard(this) flip-index='+i+'>';
 		html += '<div class="front">';
-		html += 'Front content';
 		html += '</div>';
-		html += '<div class="back">';
-		html += 'Back content';
+		html += '<div class="back center-align">';
+		html += '<span class="number"></span>';
 		html += '</div>';
 		html += '</div>';
 		html += '</div>';
@@ -60,9 +93,11 @@ function flipCard(element){
 		});
 	}
 	if(flip.isFlipped==false){
+		var index = parseInt($(element).attr('flip-index'));
+		$(element).find('.number').html(flibBoard[index])
 		$(element).flip(true);	
 	}else{
-		$(element).flip(false);
+		//$(element).flip(false);
 	}
 }
 

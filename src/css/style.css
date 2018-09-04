@@ -23,9 +23,13 @@ header, main, footer {
 }
 
 .card-grid .front{
-	background-color: white
+	background-color: #90caf9;
 }
 
 .card-grid .back{
-	background-color: green;
+	background-color: white;
+}
+
+.number{
+	font-size: 8rem;
 }
