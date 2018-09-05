@@ -11,7 +11,21 @@ function startGame(){
 		loadTable(card_number);
 		timeStart();
 		startMatrix();
+		$('input[name=difficulty]').attr('disabled',true)
 	}
+}
+
+/**
+ * Function to restart game
+ * @method restartGame
+ * @return restart game values 
+ */
+function restartGame(){
+	$('input[name=difficulty]').removeAttr('disabled')
+	$('#content .row').html('');
+	timeStop();
+	$('.timer_values').html('00:00:00');
+	flibBoard = [];
 }
 
 /**
