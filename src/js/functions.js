@@ -5,13 +5,13 @@
  */
 function startGame(){
 	var card_number = $('#card_number').val();
-	var difficulty = $('input[name=difficulty]:checked').val()
 	if(card_number>=10){
 		$('#timer').show();
 		loadTable(card_number);
 		timeStart();
 		startMatrix();
 		$('input[name=difficulty]').attr('disabled',true)
+		$('#card_number').attr('readonly',true)
 	}
 }
 
@@ -21,10 +21,12 @@ function startGame(){
  * @return restart game values 
  */
 function restartGame(){
-	$('input[name=difficulty]').removeAttr('disabled')
+	$('input[name=difficulty]').removeAttr('disabled');
+	$('#card_number').removeAttr('readonly');
 	$('#content .row').html('');
 	timeStop();
 	$('.timer_values').html('00:00:00');
+	$('#timer').hide();
 	flibBoard = [];
 }
 
@@ -123,8 +125,12 @@ function flipCard(element){
 function timeStart(){
 	timer.start();
 	timer.addEventListener('secondsUpdated', function (e) {
-	  $('.timer_values').html(timer.getTimeValues().toString());
-
+		var time_dif = getTimeByDifficult();
+		var timer_value = timer.getTimeValues();
+		$('.timer_values').html(timer.getTimeValues().toString());
+		if(timer_value.minutes==time_dif){
+			timeStop();
+		}
 	});
 }
 
@@ -147,4 +153,25 @@ function timeReset(){
 	timer.addEventListener('reset', function (e) {
 	    $('.timer_values').html(timer.getTimeValues().toString());
 	});
+}
+
+/**
+ * Get time by difficult
+ * @method getTimeByDifficult
+ * @return time return the time
+ */
+function getTimeByDifficult(){
+	var card_number = $('#card_number').val();
+	var difficulty = $('input[name=difficulty]:checked').val();
+	var time = 0;
+	if(difficulty=='easy'){
+		time = (card_number * 18) / 60;
+	}
+	else if(difficulty=='medi'){
+		time = (card_number * 12) / 60;
+	}
+	else if(difficulty=='hard'){
+		time = (card_number * 6) / 60;
+	}
+	return time;
 }
