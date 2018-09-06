@@ -4,6 +4,7 @@
  * @return loadtable on card number 
  */
 function startGame(){
+	flibBoard = [];
 	var card_number = $('#card_number').val();
 	if(card_number>=10){
 		$('#timer').show();
@@ -36,7 +37,6 @@ function restartGame(){
 						timeStop();
 						$('.timer_values').html('00:00:00');
 						$('#timer').hide();
-						flibBoard = [];
 					}
 				}
 			}
@@ -87,7 +87,8 @@ function loadTable(items){
 	var html = '';
 	for (var i = parseInt(items)-1; i >= 0; i--) {
 		html += '<div class="col s2 m2">';
-		html += '<div class="card card-grid" onclick=flipCard(this) flip-index='+i+'>';
+		html += '<div class="card card-grid" onclick=flipCard(this) flip-index="'+i+'"';
+		html += 'flip-complete="false">';
 		html += '<div class="front">';
 		html += '</div>';
 		html += '<div class="back center-align">';
@@ -111,23 +112,48 @@ function loadTable(items){
 function flipCard(element){
 	var flip = $(element).data("flip-model");
 	var active = 0;
+	// Check fliped items
 	$.each($(".card-grid"),function(key,value){
 		var fliped_element = $(value).data("flip-model");
-		if(fliped_element.isFlipped){
+		if(fliped_element.isFlipped && $(value).attr('flip-complete')=='false'){
 			active += 1;
 		}
 	});
-	if(active>=2){
-		$.each($(".card-grid"),function(key,value){
-			$(value).flip(false);
-		});
-	}
 	if(flip.isFlipped==false){
 		var index = parseInt($(element).attr('flip-index'));
 		$(element).find('.number').html(flibBoard[index])
-		$(element).flip(true);	
-	}else{
-		//$(element).flip(false);
+		$(element).flip(true);
+		active += 1;
+	}
+	if(active>2){
+		$.each($(".card-grid"),function(key,value){
+			if($(value).attr('flip-complete')=='false'){
+				$(value).flip(false);
+			}
+		});
+		active = 0;
+	}
+	if(active==2){
+		var values = [];
+		$.each($(".card-grid"),function(key,value){
+			var fliped_element = $(value).data("flip-model");
+			if(fliped_element.isFlipped && $(value).attr('flip-complete')=='false'){
+				values.push($(value))
+			}
+		});
+		if(flibBoard[values[0].attr('flip-index')]==flibBoard[values[1].attr('flip-index')]){
+			values[0].removeAttr('onclick');
+			values[1].removeAttr('onclick');
+			values[0].attr('flip-complete','true')
+			values[1].attr('flip-complete','true')
+			var win = checkWin();
+			if(win){
+				timeStop();
+				MaterialDialog.alert('Congratulations, you win! =)');
+				$('input[name=difficulty]').removeAttr('disabled');
+				$('#card_number').removeAttr('readonly');
+			}
+		}
 	}
 }
 
@@ -192,4 +218,17 @@ function getTimeByDifficult(){
 		time = (card_number * 6) / 60;
 	}
 	return time;
+}
+
+/**
+ * Check if player win
+ * @method checkWin
+ * @return win (true/false)
+ */
+function checkWin(){
+	var win = true;
+	$.each($(".card-grid"),function(key,value){
+		win = $(value).attr('flip-complete')=="false" ? false:win;
+	});
+	return win;
 }
