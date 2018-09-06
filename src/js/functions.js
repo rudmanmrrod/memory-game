@@ -21,13 +21,27 @@ function startGame(){
  * @return restart game values 
  */
 function restartGame(){
-	$('input[name=difficulty]').removeAttr('disabled');
-	$('#card_number').removeAttr('readonly');
-	$('#content .row').html('');
-	timeStop();
-	$('.timer_values').html('00:00:00');
-	$('#timer').hide();
-	flibBoard = [];
+	MaterialDialog.dialog(
+		"You wanna restart the game?",
+		{
+			title:"Restart",
+			buttons:{
+				confirm:{
+					className:"blue darken-3",
+					text:"confirm",
+					callback:function(){
+						$('input[name=difficulty]').removeAttr('disabled');
+						$('#card_number').removeAttr('readonly');
+						$('#content .row').html('');
+						timeStop();
+						$('.timer_values').html('00:00:00');
+						$('#timer').hide();
+						flibBoard = [];
+					}
+				}
+			}
+		}
+	);
 }
 
 /**
