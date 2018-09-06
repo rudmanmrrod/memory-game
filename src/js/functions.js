@@ -86,11 +86,12 @@ function countItem(element,item){
  */
 function loadTable(items){
 	var html = '';
+	var color = getActiveColor();
 	for (var i = parseInt(items)-1; i >= 0; i--) {
 		html += '<div class="col s2 m2">';
 		html += '<div class="card card-grid" onclick=flipCard(this) flip-index="'+i+'"';
 		html += 'flip-complete="false">';
-		html += '<div class="front">';
+		html += '<div class="front" id="'+color+'">';
 		html += '</div>';
 		html += '<div class="back center-align">';
 		html += '<span class="number"></span>';
@@ -259,4 +260,27 @@ function setTimeByDifficult(){
 		time *= 100;
 		$('.timer_left').html('00:00:'+time);
 	}
+}
+
+/**
+ * Function to change selector on card
+ * @method markAsSelected
+ * @param {obj} element
+ * @return removes prop select of all cards and puts
+ * into clicked
+ */
+function markAsSelected(element){
+	$.each($('#cards_colors .micro-card'),function(key,value){
+		$(value).removeClass('selected');
+	})
+	$(element).addClass('selected');
+}
+
+/**
+ * Function to get the currect active color
+ * @method markAsSelected
+ * @return color Return current card color
+ */
+function getActiveColor(){
+	return $('#cards_colors .selected').attr('id');
 }

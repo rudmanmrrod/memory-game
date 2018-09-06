@@ -71,19 +71,75 @@
 					</ul>
 				</li>
 				<li><a href="#!" class="blue-text darken-4" onclick="restartGame()">Restart</a></li>
-<!-- 				<li class="no-padding">
+ 				<li class="no-padding">
 					<ul class="collapsible collapsible-accordion">
 						<li>
-							<a class="collapsible-header">Options<i class="material-icons">arrow_drop_down</i></a>
+							<a class="collapsible-header blue-text darken-4">
+								Options<i class="material-icons">arrow_drop_down</i>
+							</a>
 							<div class="collapsible-body">
-						<ul>
-							<li><a href="#!">Cards</a></li>
-							<li><a href="#!">Size</a></li>
-						</ul>
-						</div>
+								<ul>
+									<li>
+										<strong>Cards</strong><br/>
+										<div class="row" id="cards_colors">
+											<div class="col s2">
+												<div class="card micro-card selected" id="default-color" onclick="markAsSelected(this)">
+													<div class="card-content"></div>
+												</div>
+											</div>
+											<div class="col s2">
+												<div class="card micro-card" id="pink-color" onclick="markAsSelected(this)">
+													<div class="card-content"></div>
+												</div>
+											</div>
+											<div class="col s2">
+												<div class="card micro-card" id="purple-color" onclick="markAsSelected(this)">
+													<div class="card-content"></div>
+												</div>
+											</div>
+											<div class="col s2">
+												<div class="card micro-card" id="darkpurple-color" onclick="markAsSelected(this)">
+													<div class="card-content"></div>
+												</div>
+											</div>
+											<div class="col s2">
+												<div class="card micro-card" id="indigo-color" onclick="markAsSelected(this)">
+													<div class="card-content"></div>
+												</div>
+											</div>
+											<div class="col s2">
+												<div class="card micro-card" id="blue-color" onclick="markAsSelected(this)">
+													<div class="card-content"></div>
+												</div>
+											</div>
+											<div class="col s2">
+												<div class="card micro-card" id="green-color" onclick="markAsSelected(this)">
+													<div class="card-content"></div>
+												</div>
+											</div>
+											<div class="col s2">
+												<div class="card micro-card" id="orange-color" onclick="markAsSelected(this)">
+													<div class="card-content"></div>
+												</div>
+											</div>
+											<div class="col s2">
+												<div class="card micro-card" id="darkorange-color" onclick="markAsSelected(this)">
+													<div class="card-content"></div>
+												</div>
+											</div>
+											<div class="col s2">
+												<div class="card micro-card" id="grey-color" onclick="markAsSelected(this)">
+													<div class="card-content"></div>
+												</div>
+											</div>
+										</div>
+									</li>
+									<!--<li><a href="#!">Size</a></li> -->
+								</ul>
+							</div>
 						</li>
 					</ul>
-				</li> -->
+				</li> 
 			</ul>
 		</div>
 		<div id="content">

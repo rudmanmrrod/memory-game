@@ -22,14 +22,56 @@ header, main, footer {
 	height: 200px;
 }
 
-.card-grid .front{
-	background-color: #90caf9;
-}
-
-.card-grid .back{
-	background-color: white;
-}
-
 .number{
 	font-size: 8rem;
 }
+
+.micro-card{
+	height: 2rem;
+}
+
+.selected{
+	box-shadow: 0 2px 2px 0 black,0 3px 1px -2px black,0 1px 5px 0 black;
+}
+
+/* Color definition */
+#pink-color{
+	background-color: #e91e63;
+}
+
+#purple-color{
+	background-color: #4a148c;
+}
+
+#darkpurple-color{
+	background-color: #6200ea;
+}
+
+#indigo-color{
+	background-color: #3f51b5;
+}
+
+#blue-color{
+	background-color: #2962ff;
+}
+
+#green-color{
+	background-color: #4caf50;
+}
+
+#orange-color{
+	background-color: #e65100;
+}
+
+#darkorange-color{
+	background-color: #dd2c00;
+}
+
+#grey-color{
+	background-color: #b0bec5;
+}
+
+#default-color{
+	background-color: #2962ff;
+}
+
