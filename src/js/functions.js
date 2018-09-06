@@ -87,9 +87,15 @@ function countItem(element,item){
 function loadTable(items){
 	var html = '';
 	var color = getActiveColor();
+	var size = getCardSize();
 	for (var i = parseInt(items)-1; i >= 0; i--) {
-		html += '<div class="col s2 m2">';
-		html += '<div class="card card-grid" onclick=flipCard(this) flip-index="'+i+'"';
+		if(size == 'small-card'){
+			html += '<div class="col xs1">';
+		}
+		else{
+			html += '<div class="col s2 m2">';
+		}
+		html += '<div class="card card-grid '+size+'" onclick=flipCard(this) flip-index="'+i+'"';
 		html += 'flip-complete="false">';
 		html += '<div class="front" id="'+color+'">';
 		html += '</div>';
@@ -113,6 +119,8 @@ function loadTable(items){
  */
 function flipCard(element){
 	var flip = $(element).data("flip-model");
+	console.log(element)
+	console.log(flip)
 	var active = 0;
 	// Check fliped items
 	$.each($(".card-grid"),function(key,value){
@@ -266,11 +274,12 @@ function setTimeByDifficult(){
  * Function to change selector on card
  * @method markAsSelected
  * @param {obj} element
+ * @param {str} id
  * @return removes prop select of all cards and puts
  * into clicked
  */
-function markAsSelected(element){
-	$.each($('#cards_colors .micro-card'),function(key,value){
+function markAsSelected(element,id){
+	$.each($(id),function(key,value){
 		$(value).removeClass('selected');
 	})
 	$(element).addClass('selected');
@@ -278,9 +287,18 @@ function markAsSelected(element){
 
 /**
  * Function to get the currect active color
- * @method markAsSelected
+ * @method getActiveColor
  * @return color Return current card color
  */
 function getActiveColor(){
 	return $('#cards_colors .selected').attr('id');
+}
+
+/**
+ * Function to get the currect active size
+ * @method getCardSize
+ * @return color Return current card size
+ */
+function getCardSize(){
+	return $('#cards_size .selected').attr('id');
 }

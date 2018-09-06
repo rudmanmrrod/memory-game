@@ -83,58 +83,77 @@
 										<strong>Cards</strong><br/>
 										<div class="row" id="cards_colors">
 											<div class="col s2">
-												<div class="card micro-card selected" id="default-color" onclick="markAsSelected(this)">
+												<div class="card micro-card selected" id="default-color" onclick="markAsSelected(this,'#cards_colors .micro-card')">
 													<div class="card-content"></div>
 												</div>
 											</div>
 											<div class="col s2">
-												<div class="card micro-card" id="pink-color" onclick="markAsSelected(this)">
+												<div class="card micro-card" id="pink-color" onclick="markAsSelected(this,'#cards_colors .micro-card')">
 													<div class="card-content"></div>
 												</div>
 											</div>
 											<div class="col s2">
-												<div class="card micro-card" id="purple-color" onclick="markAsSelected(this)">
+												<div class="card micro-card" id="purple-color" onclick="markAsSelected(this,'#cards_colors .micro-card')">
 													<div class="card-content"></div>
 												</div>
 											</div>
 											<div class="col s2">
-												<div class="card micro-card" id="darkpurple-color" onclick="markAsSelected(this)">
+												<div class="card micro-card" id="darkpurple-color" onclick="markAsSelected(this,'#cards_colors .micro-card')">
 													<div class="card-content"></div>
 												</div>
 											</div>
 											<div class="col s2">
-												<div class="card micro-card" id="indigo-color" onclick="markAsSelected(this)">
+												<div class="card micro-card" id="indigo-color" onclick="markAsSelected(this,'#cards_colors .micro-card')">
 													<div class="card-content"></div>
 												</div>
 											</div>
 											<div class="col s2">
-												<div class="card micro-card" id="blue-color" onclick="markAsSelected(this)">
+												<div class="card micro-card" id="blue-color" onclick="markAsSelected(this,'#cards_colors .micro-card')">
 													<div class="card-content"></div>
 												</div>
 											</div>
 											<div class="col s2">
-												<div class="card micro-card" id="green-color" onclick="markAsSelected(this)">
+												<div class="card micro-card" id="green-color" onclick="markAsSelected(this,'#cards_colors .micro-card')">
 													<div class="card-content"></div>
 												</div>
 											</div>
 											<div class="col s2">
-												<div class="card micro-card" id="orange-color" onclick="markAsSelected(this)">
+												<div class="card micro-card" id="orange-color" onclick="markAsSelected(this,'#cards_colors .micro-card')">
 													<div class="card-content"></div>
 												</div>
 											</div>
 											<div class="col s2">
-												<div class="card micro-card" id="darkorange-color" onclick="markAsSelected(this)">
+												<div class="card micro-card" id="darkorange-color" onclick="markAsSelected(this,'#cards_colors .micro-card')">
 													<div class="card-content"></div>
 												</div>
 											</div>
 											<div class="col s2">
-												<div class="card micro-card" id="grey-color" onclick="markAsSelected(this)">
+												<div class="card micro-card" id="grey-color" onclick="markAsSelected(this,'#cards_colors .micro-card')">
 													<div class="card-content"></div>
 												</div>
 											</div>
 										</div>
 									</li>
-									<!--<li><a href="#!">Size</a></li> -->
+									<li>
+										<strong>Size</strong><br/>
+										<div class="row" id="cards_size">
+											<div class="col s4">
+												<h6>Small</h6>
+								        <div class="card nano-card" onclick="markAsSelected(this,'#cards_size .card')" id="small-card">
+												</div>
+											</div>
+								      <div class="col s4">
+								      	<h6>Medium</h6>
+								        <div class="card micro-card" onclick="markAsSelected(this,'#cards_size .card')" id="medium-card">
+												</div>
+											</div>
+											<div class="col s4">
+												<h6>Large</h6>
+								        <div class="card tiny-card selected" onclick="markAsSelected(this,'#cards_size .card')" id="large-card">
+												</div>
+											</div>
+										</div>
+									</li>
 								</ul>
 							</div>
 						</li>

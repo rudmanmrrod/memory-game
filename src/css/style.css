@@ -22,14 +22,6 @@ header, main, footer {
 	height: 200px;
 }
 
-.number{
-	font-size: 8rem;
-}
-
-.micro-card{
-	height: 2rem;
-}
-
 .selected{
 	box-shadow: 0 2px 2px 0 black,0 3px 1px -2px black,0 1px 5px 0 black;
 }
@@ -75,3 +67,45 @@ header, main, footer {
 	background-color: #2962ff;
 }
 
+/* Card Example Size */
+.nano-card{
+	height: 1.8rem;
+	width: 1.5rem;
+}
+
+.micro-card{
+	height: 2.2rem;
+	width: 1.8rem;
+}
+
+.tiny-card{
+	height: 3rem;
+	width: 2.5rem;
+}
+
+/* Card Size */
+.small-card{
+	height: 8rem;
+	width: 6rem;
+}
+
+.small-card .number{
+	font-size: 5.6rem;
+}
+
+.medium-card{
+	height: 10rem;
+	width: 7.6rem;
+}
+
+.medium-card .number{
+	font-size: 7rem;
+}
+
+.large-card{
+	height: 12rem;
+}
+
+.large-card .number{
+	font-size: 8.8rem;
+}
