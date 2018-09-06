@@ -11,8 +11,9 @@ function startGame(){
 		loadTable(card_number);
 		timeStart();
 		startMatrix();
-		$('input[name=difficulty]').attr('disabled',true)
-		$('#card_number').attr('readonly',true)
+		setTimeByDifficult();
+		$('input[name=difficulty]').attr('disabled',true);
+		$('#card_number').attr('readonly',true);
 	}
 }
 
@@ -168,7 +169,15 @@ function timeStart(){
 		var time_dif = getTimeByDifficult();
 		var timer_value = timer.getTimeValues();
 		$('.timer_values').html(timer.getTimeValues().toString());
-		if(timer_value.minutes==time_dif){
+		if(time_dif > 1){
+			time_dif = Math.round(time_dif);
+			var time_time = timer_value.minutes;
+		}
+		else{
+			time_dif *= 100;
+			var time_time = timer_value.seconds;
+		}
+		if(time_time==time_dif){
 			timeStop();
 			$('.card').removeAttr('onclick');
 			$('input[name=difficulty]').removeAttr('disabled');
@@ -231,4 +240,23 @@ function checkWin(){
 		win = $(value).attr('flip-complete')=="false" ? false:win;
 	});
 	return win;
+}
+
+/**
+ * Set time by cards and difficult
+ * @method setTimeByDifficult
+ * @return time on html
+ */
+function setTimeByDifficult(){
+	var time = getTimeByDifficult();
+	var time_char = '';
+	if(time > 1){
+		time = Math.round(time);
+		time_char = time<10?'0'+time:time
+		$('.timer_left').html('00:'+time_char+':00');
+	}
+	else{
+		time *= 100;
+		$('.timer_left').html('00:00:'+time);
+	}
 }
