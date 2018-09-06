@@ -144,6 +144,10 @@ function timeStart(){
 		$('.timer_values').html(timer.getTimeValues().toString());
 		if(timer_value.minutes==time_dif){
 			timeStop();
+			$('.card').removeAttr('onclick');
+			$('input[name=difficulty]').removeAttr('disabled');
+			$('#card_number').removeAttr('readonly');
+			MaterialDialog.alert('You lose the game =( , start again');
 		}
 	});
 }
