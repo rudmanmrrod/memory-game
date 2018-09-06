@@ -209,13 +209,13 @@ function getTimeByDifficult(){
 	var difficulty = $('input[name=difficulty]:checked').val();
 	var time = 0;
 	if(difficulty=='easy'){
-		time = (card_number * 18) / 60;
+		time = (card_number * 9) / 60;
 	}
 	else if(difficulty=='medi'){
-		time = (card_number * 12) / 60;
+		time = (card_number * 6) / 60;
 	}
 	else if(difficulty=='hard'){
-		time = (card_number * 6) / 60;
+		time = (card_number * 3) / 60;
 	}
 	return time;
 }
